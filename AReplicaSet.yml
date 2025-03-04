@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    matchlabels:
+     env: dev
+  template:
+    metadata:
+        labels:
+           env: dev
+    spec:
+      containers:
+        - name: nginxccontainer
+          image: nginx
+          ports:
+            - containerPort: 80
